@@ -1,0 +1,161 @@
+(function () {
+    'use strict';
+
+    const NOME_LOJA = "ALIENSALES SOLUTIONS";
+    const TEXTO_HERO = "Automatize seu negócio com Inteligência e Precisão";
+
+    // 1. Criar Fundo Global com Luzes e Ícones 3D (Sobrepondo o site)
+    function criarFundoGlobal() {
+        if (document.getElementById('alien-global-bg')) return;
+
+        const bgDiv = document.createElement('div');
+        bgDiv.id = 'alien-global-bg';
+        bgDiv.innerHTML = `
+            <div class="glow-orb glow-discord"></div>
+            <div class="glow-orb glow-whatsapp"></div>
+            <div class="glow-orb glow-telegram"></div>
+            
+            <i class="fa-brands fa-whatsapp floating-icon icon-main-focus"></i>
+            <i class="fa-brands fa-discord floating-icon icon-sub-1"></i>
+            <i class="fa-brands fa-telegram floating-icon icon-sub-2"></i>
+        `;
+        document.body.appendChild(bgDiv);
+    }
+
+    // 2. Criar Hero Premium com efeito Typing (Cursor Único)
+    function criarHeroPremium(target) {
+        if (target.querySelector('.alien-hero-pro')) return;
+
+        const heroDiv = document.createElement('div');
+        heroDiv.className = 'alien-hero-pro';
+        heroDiv.innerHTML = `
+            <div class="alien-hero-content">
+                <div class="alien-badge"><i class="fa-solid fa-bolt"></i> ${NOME_LOJA}</div>
+                <h1 id="typing-title"></h1>
+                <p class="alien-fade-in">Bots de alta performance para Discord, WhatsApp e Telegram. Aumente suas vendas e otimize seu suporte sem complicações.</p>
+                <div class="alien-hero-buttons alien-fade-in">
+                    <button class="alien-btn-primary" id="scroll-to-products">Explorar Soluções</button>
+                    <button class="alien-btn-secondary" onclick="window.open('https://discord.gg/bTSUZZPxX9', '_blank')"><i class="fa-brands fa-discord"></i> Servidor Oficial</button>
+                </div>
+            </div>
+        `;
+        target.prepend(heroDiv);
+
+        let i = 0;
+        const typingEl = document.getElementById('typing-title');
+        function type() {
+            if (i <= TEXTO_HERO.length) {
+                typingEl.innerHTML = TEXTO_HERO.substring(0, i) + '<span class="cursor-blink">|</span>';
+                i++;
+                setTimeout(type, 50);
+            }
+        }
+        setTimeout(type, 800);
+
+        document.getElementById('scroll-to-products').addEventListener('click', () => {
+            const prodArea = document.querySelector('.sc-5dfe3080-0');
+            if (prodArea) prodArea.scrollIntoView({ behavior: 'smooth' });
+        });
+    }
+
+    // 3. Sistema de Scroll Horizontal (Arrastar com Mouse)
+    function aplicarScrollArraste() {
+        // Seleciona o container interno que segura os cards
+        const containers = document.querySelectorAll('.sc-72c69f28-1, .sc-72c69f28-2');
+        containers.forEach(container => {
+            if (container.dataset.scrollAtivo) return;
+            container.dataset.scrollAtivo = "true";
+
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            container.addEventListener('mousedown', (e) => {
+                isDown = true;
+                container.classList.add('active-drag');
+                startX = e.pageX - container.offsetLeft;
+                scrollLeft = container.scrollLeft;
+            });
+            container.addEventListener('mouseleave', () => { isDown = false; container.classList.remove('active-drag'); });
+            container.addEventListener('mouseup', () => { isDown = false; container.classList.remove('active-drag'); });
+            container.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - container.offsetLeft;
+                const walk = (x - startX) * 2;
+                container.scrollLeft = scrollLeft - walk;
+            });
+        });
+    }
+
+    // 4. Novo Footer Customizado
+    function inicializarNovoFooter() {
+        if (document.querySelector('.alien-footer-final')) return;
+        const footer = document.createElement('footer');
+        footer.className = 'alien-footer-final';
+        footer.innerHTML = `
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://cdn.ereemby.com/attachments/17442265699594268imagem.png" width="40"> 
+                        <span>AlienSales Solutions</span>
+                    </div>
+                    <p>Automatize seu negócio hoje, com nossos serviços!</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Políticas</h4>
+                    <a href="/terms">Termos de serviço</a>
+                    <a href="/cookies">Políticas de Cookies</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Nossas Redes</h4>
+                    <div class="social-flex">
+                        <a href="https://discord.gg/bTSUZZPxX9" target="_blank"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 AlienSales Solutions. Todos os direitos reservados.</p>
+                <a href="https://feds.lol/apexis" target="_blank" class="dev-credit">Desenvolvido por <span>Apx</span></a>
+            </div>
+        `;
+        document.body.appendChild(footer);
+    }
+
+    // 5. Função de Loop de Controle (Garante que os produtos não sumam)
+    function loopControle() {
+        criarFundoGlobal();
+
+        // Alvo do Hero
+        const mainContainer = document.querySelector('.sc-bce61202-0.eqzQsx');
+        if (mainContainer) criarHeroPremium(mainContainer);
+
+        // Alvo dos Produtos (Força exibição da classe sc-5dfe3080-0)
+        const produtosContainer = document.querySelector('.sc-5dfe3080-0');
+        if (produtosContainer) {
+            produtosContainer.style.setProperty('display', 'block', 'important');
+            produtosContainer.style.setProperty('visibility', 'visible', 'important');
+            produtosContainer.style.setProperty('opacity', '1', 'important');
+            aplicarScrollArraste();
+        }
+
+        inicializarNovoFooter();
+    }
+
+    // Inicialização com Delay para evitar conflito com o carregamento do React
+    setTimeout(() => {
+        // Injeta FontAwesome se necessário
+        if (!document.querySelector('link[href*="font-awesome"]')) {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css';
+            document.head.appendChild(link);
+        }
+
+        // Roda o loop a cada 1 segundo para manter os produtos ativos
+        setInterval(loopControle, 1000);
+    }, 500);
+
+})();

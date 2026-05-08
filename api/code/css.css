@@ -1,0 +1,413 @@
+/* ==========================================
+   1. BASE E TRANSPARÊNCIAS (FUNDAMENTAL)
+========================================== */
+body,
+html {
+    background-color: #020202 !important;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden !important;
+}
+
+/* Deixa os blocos da Ereemby transparentes para o fundo global aparecer */
+#__ecommerce,
+.sc-1b35f5c3-1,
+.sc-bfa3a7a7-2,
+.sc-9e6efe8d-0,
+.sc-bfa3a7a7-3 {
+    background: transparent !important;
+}
+
+/* Força a visibilidade da área de produtos que você identificou */
+.sc-5dfe3080-0.gYFAEW {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative;
+    z-index: 50;
+    background: transparent !important;
+}
+
+/* ==========================================
+   2. REMOÇÃO DE ITENS NATIVOS (CONFORME PRINTS)
+========================================== */
+/* Remove Imagem do Banner e Grade de Categorias (Imagem 3) */
+.sc-bce61202-2.jqGawY,
+.sc-2877a2a6-0.fOcPwM {
+    display: none !important;
+}
+
+/* Remove Feedbacks/Avaliações (Imagem 2) */
+.sc-c23da882-0.hEzouJ,
+.sc-c23da882-1 {
+    display: none !important;
+}
+
+/* Remove Footer Antigo (Imagem 1) */
+footer.sc-8a04aca7-0.hKzTUv {
+    display: none !important;
+}
+
+/* ==========================================
+   3. FUNDO GLOBAL (LUZES E ÍCONES 3D)
+========================================== */
+#alien-global-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    /* Entre o fundo preto e o conteúdo */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Orbes de Luzes Suaves */
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.18;
+}
+
+.glow-discord {
+    width: 50vw;
+    height: 50vw;
+    background: #5865F2;
+    top: -10%;
+    left: -10%;
+}
+
+.glow-whatsapp {
+    width: 45vw;
+    height: 45vw;
+    background: #25D366;
+    bottom: -5%;
+    right: -5%;
+}
+
+.glow-telegram {
+    width: 30vw;
+    height: 30vw;
+    background: #0088cc;
+    top: 40%;
+    left: 40%;
+}
+
+/* Ícones Flutuantes com Profundidade */
+.floating-icon {
+    position: absolute;
+    color: #fff;
+    animation: alienFloat 15s ease-in-out infinite;
+}
+
+/* ÍCONE GIGANTE NO CANTO INFERIOR DIREITO (SOBREPONDO TUDO COM DESFOQUE) */
+.icon-main-focus {
+    bottom: -8%;
+    right: -2%;
+    font-size: 35rem;
+    /* Gigante */
+    opacity: 0.08;
+    filter: blur(15px);
+    /* Efeito de proximidade/profundidade */
+    z-index: 999;
+    /* Fica visualmente à frente das luzes */
+    color: #25D366;
+    animation-delay: 1s;
+}
+
+.icon-sub-1 {
+    top: 5%;
+    left: 3%;
+    font-size: 15rem;
+    opacity: 0.04;
+    filter: blur(5px);
+    color: #5865F2;
+}
+
+.icon-sub-2 {
+    top: 35%;
+    right: 15%;
+    font-size: 10rem;
+    opacity: 0.03;
+    filter: blur(3px);
+    color: #0088cc;
+}
+
+@keyframes alienFloat {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(-20px, -40px) rotate(5deg);
+    }
+}
+
+/* ==========================================
+   4. HERO PREMIUM (TEXTOS PROFISSIONAIS)
+========================================== */
+.alien-hero-pro {
+    padding: 100px 20px 60px;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+}
+
+.alien-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    border-radius: 30px;
+    background: rgba(0, 255, 170, 0.08);
+    border: 1px solid rgba(0, 255, 170, 0.2);
+    color: #00ffaa;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+#typing-title {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    /* Tamanho reduzido e elegante */
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.cursor-blink {
+    color: #00ffaa;
+    animation: blink 1s step-end infinite;
+    font-weight: 300;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.alien-hero-pro p {
+    font-size: 1rem;
+    color: #a0a6c0;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.alien-hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.alien-btn-primary,
+.alien-btn-secondary {
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
+
+.alien-btn-primary {
+    background: #fff;
+    color: #000;
+    border: none;
+}
+
+.alien-btn-primary:hover {
+    background: #00ffaa;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 255, 170, 0.2);
+}
+
+.alien-btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.alien-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   5. CARROSSEL DE PRODUTOS (SCROLL HORIZONTAL)
+========================================== */
+.sc-72c69f28-1 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 20px !important;
+    padding: 20px 10px 60px !important;
+    cursor: grab;
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.sc-72c69f28-1::-webkit-scrollbar {
+    display: none;
+}
+
+/* Chrome/Safari */
+
+.sc-72c69f28-1.arrastando {
+    cursor: grabbing;
+    scroll-behavior: auto;
+}
+
+/* Estilização dos Cards */
+.product_card,
+.sc-72c69f28-6 {
+    flex: 0 0 270px !important;
+    /* Largura fixa do card */
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    border-radius: 16px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.product_card:hover {
+    transform: translateY(-10px) !important;
+    border-color: rgba(0, 255, 170, 0.3) !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ==========================================
+   6. NOVO FOOTER CUSTOMIZADO
+========================================== */
+.alien-footer-final {
+    background: rgba(5, 5, 5, 0.8);
+    backdrop-filter: blur(20px);
+    padding: 80px 20px 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 100;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+.footer-section h4 {
+    margin-bottom: 25px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.footer-section a {
+    display: block;
+    color: #888;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section a:hover {
+    color: #00ffaa;
+    padding-left: 5px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.footer-logo img {
+    width: 40px;
+    border-radius: 8px;
+}
+
+.social-flex {
+    display: flex;
+    gap: 15px;
+}
+
+.social-flex a {
+    font-size: 1.4rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.social-flex a:hover {
+    background: #00ffaa;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #555;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-bottom span {
+    color: #00ffaa;
+    font-weight: 700;
+}
+
+/* ==========================================
+   7. CHATBOT E EXTRAS (MANUTENÇÃO)
+========================================== */
+#groq-chat-button {
+    z-index: 9999;
+}
+
+#groq-chat-window {
+    z-index: 9999;
+    background: #0a0a0a;
+    border: 1px solid #1a1a1a;
+}
+
+.groq-chat-message.user-message {
+    background: #00ffaa;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .icon-main-focus {
+        font-size: 20rem;
+        bottom: -5%;
+    }
+
+    .footer-bottom {
+        justify-content: center;
+    }
+}
